@@ -4,16 +4,17 @@
 #include <stdlib.h>
 int main(int argc, char** argv) 
 {
-    while (1) 
-    {
-      char *prompt = "minishell > ";
-      char *input = readline(prompt);
-      if(!input) // for EOF error
-        break;
-      add_history(input);
-      //printf("%s\n", input);
-      free (input);
+  int i = 0;
+  while (1) 
+  {
+    char *prompt = "minishell > ";
+    char *input = readline(prompt);
+    if(!input) // for EOF error
+      break;
+    add_history(input);
+    while(argv[i] && argv[1][i]) =
+    //printf("%s\n", input);
+    free (input);
     }
 
   return 0;
-}
