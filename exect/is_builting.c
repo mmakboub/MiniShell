@@ -12,26 +12,31 @@
 
 #include <unistd.h>
 
-void	is_builting(t_command *cmd)
+void	is_builting(t_command *cmd)//CMD = ARGV[0]
 {
 	if (!ft_strcmp(command->cmd[0], "echo"))
 		echo();
-    else if (!ft_strcmp(command->cmd[0], "pwd"))
+    else if (!ft_strcmp(command->cmd, "pwd"))
         pwd();
-    else if (!ft_strcmp(command->cmd[0], "cd"))
+    else if (!ft_strcmp(command->cmd, "cd"))
 		cd();
-    else if (!ft_strcmp(command->cmd[0], "exit"))
+    else if (!ft_strcmp(command->cmd, "exit"))
 		exit();
-    else if (!ft_strcmp(command->cmd[0], "export"))
+    else if (!ft_strcmp(command->cmd, "export"))
 		export();
-    else if (!ft_strcmp(command->cmd[0], "unset"))
+    else if (!ft_strcmp(command->cmd, "unset"))
 		unset();
-    else if (!ft_strcmp(command->cmd[0], "env"))
+    else if (!ft_strcmp(command->cmd, "env"))
 		env();
 	else
-		check_no_builtings(command->cmd)
+		check_path(cmd);
 }
 
+char *receive_full_path(t_command	*command)
+{
+	if(command->cmd[0][0] == '/')
+	//to_do_tomorrow
+} 
 void env_initialisation(t_env **env)
 {
 	int shlvl;
