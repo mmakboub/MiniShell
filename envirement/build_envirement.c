@@ -6,6 +6,7 @@ void	refresh_oldpwd(t_env	**env, char *pwd)
 {
 	t_env *tmp;
 	tmp = *env;
+	char *oldpwd;
 	while(tmp && strcmp(tmp->name, "OLDPWD"))
 		tmp = tmp->next;
 	if(tmp && tmp->value)
@@ -14,6 +15,9 @@ void	refresh_oldpwd(t_env	**env, char *pwd)
 		tmp->value = NULL;
 		tmp->value = pwd;
 	}
+	else
+		oldpwd = printf("OLDPWD=%s",pwd);
+		ft_lstadd_back(ft_lstnew(oldpwd), env);
 }
 t_env	*finder_getter(t_env	*env, char *name)
 {
@@ -25,6 +29,7 @@ t_env	*finder_getter(t_env	*env, char *name)
 }
 void	refresh_pwd(t_env **env)
 {
+	char *pwd
 	t_env	*head;
 	head = *env;
 	while(head && strcmp(head->name, "PWD"))
@@ -36,7 +41,8 @@ void	refresh_pwd(t_env **env)
 		head->value = getcwd(NULL, 0);
 	}
 	else
-		ft_lstadd_back(ft_lstnew(head->value), &tmp);
+		pwd = printf("PWD=%s",getcwd(NULL, 0);
+		ft_lstadd_back(ft_lstnew(pwd), env);
 }
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 

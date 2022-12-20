@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/18 21:56:08 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:03:07 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ typedef struct s_env
     char *name;
     struct s_env *next;
 }   t_env;
-
+typedef struct s_command {
+    int type;
+    int space;
+    char **cmd;
+    int nbr_args;
+    struct command *next;
+    struct command *prev;
+}   t_command;
 void    printferror(char *str);
 void    ft_remove_fron_env(t_env **begin_list, t_env *data_ref);
 int     check_is_digit(int x);

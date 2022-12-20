@@ -30,6 +30,6 @@ void cd(t_command *command, t_env **env)
         if(chdir(command->args[1]) == -1)
             perror("cd");
     }
-    refresh_pwd(env, pwd);
-    refresh_oldpwd(env);
+    refresh_pwd(env);
+    refresh_oldpwd(env, pwd);
 }

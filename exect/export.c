@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 void    display_env(t_env **envt)
 {
 	t_env *tmp = *env;
@@ -27,5 +28,5 @@ void export(t_command *command, t_env **env)
         display_sorted_env(env)
     }
     else
-        added_display_env(env, commande-)
+        added_display_env(env, commande-) // to do : mnin nji ntraiter l argument tani if condition ila kan arg[2][0] mashi alphabet treturner bash: export: `8=k': not a valid identifier / or !strchr(=)skip it 
 }

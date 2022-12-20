@@ -39,11 +39,11 @@ void exit(t_command *command)
 	int j;
     int exit_status;
 	exit_status = check_exit_status(command->args[1]);
-    // if(command->args[1] && command->args[2])
-	// {
-	// 	printf("exit\n");
-    //     printf("minishell: exit: too many arguments");
-	// }
+    if(command->args[1] && command->args[2])
+	{
+		printf("exit\n");
+        printf("minishell: exit: too many arguments");
+	}
     if(command->nb_args == 1)
     {
         printf("%s\n", "exit");
