@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/19 18:03:07 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:04:30 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_env
 typedef struct s_command {
     int type;
     int space;
-    char **cmd;
+    char **args;
+    char *cmd;
     int nbr_args;
     struct command *next;
     struct command *prev;

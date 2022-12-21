@@ -31,18 +31,43 @@ void	is_builting(t_command *cmd)//CMD = ARGV[0]
 	else
 		check_path(cmd);
 }
-
-char *receive_full_path(t_command	*command)
+char	*ft_strjoin(const char *s1, const char *s2, const char *s3)
 {
-	if(command->cmd[0][0] == '/')
-	//to_do_tomorrow
-} 
+	char	*new_str;
+	size_t	len_s1;
+	size_t	len_s2;
+	size_t	len_s3;
+	size_t	j;
+	size_t	i;
+
+	if (!s1)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	len_s3 = ft_strlen(s3);
+	new_str = (char *)malloc((len_s1 + len_s2 + len_s3 + 1) * sizeof(char));
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		new_str[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		new_str[j++] = s2[i++];
+	i = 0;
+	while(s3[i])
+		new_str[j++] = s3[i++];
+	new_str[j] = '\0';
+	return (new_str);
+}
+
 void env_initialisation(t_env **env)
 {
 	int shlvl;
 	char *pwd;
 	t_env *tmp;
-	int new_shlvl;
+	char new_shlvl;
 
 	tmp = *env;
 	if(finder_getter(env,"PWD") == NULL)
@@ -56,22 +81,24 @@ void env_initialisation(t_env **env)
 	if(tmp)
 	{
 		shlvl = atoi(ft_strdup(tmp->value))
-		//new_shlvl = atoi(ft_strdup(tmp->value)) + 1
+		//new_shlvl = atoi(ft_strdup(tmp->value)) + 1 (int)
 		free(tmp->value);
 		if(shlvl < 0)
 			shlvl = 0;
-		else if (shlvl == 999)
-			shlvl == atoi(ft_strdup(""))
-		else if (shlvl >=1000)
-		{
-			printf("minishell: warning: shell level %s too high, resetting to 1", );
-			shlvl = 1;
-		}
+		//else if (shlvl == 999)
+			//shlvl == atoi(ft_strdup(""));
+		// else if (shlvl >=1000)
+		// {
+		// 	printf("minishell: warning: shell level %s too high, resetting to 1", );
+		// 	shlvl = 1;
+		// }
 		else
 			tmp->value = ft_itoa(shlvl + 1);
 		free(shlvl);
 	}
 	else
-		ft_lstadd_back(FT(ft_lstnew()), &tmp)
-	
+	{
+		new_shlvl = printf("SHLVL=%s",);
+		ft_lstadd_back((ft_lstnew()), &tmp);
+	}
 }
