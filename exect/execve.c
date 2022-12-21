@@ -6,7 +6,7 @@ char *execute_cmd(t_command *command)
 	int i;
 
 	if((command->cmd[0][0] == '.' && command->cmd[0][1] == '/') ||  command->cmd[0][0] == '/')
-		run_executable(command);
+		run_executable(command);//todo
 	line = getenv("PATH");
 	if(!line)
 		return(NULL);
@@ -41,12 +41,17 @@ char *join_get_acces(char **splited_path, char *cmd)
 		splited_path[i] = ft_concatenate(tmp, "/", cmd);
 		free(tmp);
 		if(!check_accecs(splited_path[i]));
-			return(perror());
+			return(perror(""));//don't knw what should i do in this case : todo: should fixe it;
 		return(ft_strdup(splited_path));
 	}
 }
-char *execve(t_command *command, )
+void execve_cmd(t_command *command, char **env, char **argv)//command->argv:paramt3
 {
     char *path;
-    path = execute_cmd(command)
+    char *msg_error;
+    path = execute_cmd(command);//todo : adding variable that stores all environment informatin
+    if(execve(path, argv, env) == -1)
+        perror("Minishell: error: ")
+    free(path);
+    //todo:free env;
 }
