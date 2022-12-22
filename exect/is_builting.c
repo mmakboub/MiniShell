@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 01:38:45 by mmakboub          #+#    #+#             */
+/*   Created: 2022/11/19 01:38:45 by mmakboub          #+#    #+#             */
 /*   Updated: 2022/12/18 20:38:45 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include"minishell.h"
 
 void	is_builting(t_command *cmd)//CMD = ARGV[0]
 {
@@ -31,7 +31,7 @@ void	is_builting(t_command *cmd)//CMD = ARGV[0]
 	else
 		check_path(cmd);
 }
-char	*ft_strjoin(const char *s1, const char *s2, const char *s3)
+char	*concatenate(const char *s1, const char *s2, const char *s3)
 {
 	char	*new_str;
 	size_t	len_s1;
@@ -40,7 +40,7 @@ char	*ft_strjoin(const char *s1, const char *s2, const char *s3)
 	size_t	j;
 	size_t	i;
 
-	if (!s1)
+	if (!s1 || !s2 || !s3)
 		return (NULL);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);

@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "TEST.C": "cpp"
+        "TEST.C": "cpp",
+        "minishell.h": "c"
     }
 }

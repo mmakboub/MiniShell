@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 22:39:00 by mmakboub          #+#    #+#             */
+/*   Created: 2022/11/21 11:05:55 by mmakboub          #+#    #+#             */
 /*   Updated: 2022/12/18 20:39:00 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include"minishell.h"
 void    display_env(t_env **envt)
 {
 	t_env *tmp = *env;

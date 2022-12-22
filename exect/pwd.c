@@ -5,11 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 20:24:41 by mmakboub          #+#    #+#             */
+/*   Created: 2022/11/20 15:55:23 by mmakboub          #+#    #+#             */
 /*   Updated: 2022/12/18 20:24:41 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+
+#include"minishell.h"
 void pwd(void)
 {
     char *path;

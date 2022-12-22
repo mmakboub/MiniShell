@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 12:24:21 by mmakboub          #+#    #+#             */
+/*   Created: 2022/11/18 12:44:01 by mmakboub          #+#    #+#             */
 /*   Updated: 2022/12/18 20:24:21 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"minishell.h"
 
-void  ft_remove_fron_env(t_env **begin_list, t_env *data_ref)
+void  ft_remove_from_env(t_env **begin_list, t_env *data_ref)
 {
 	if (begin_list == NULL || *begin_list == NULL)
 		return;
 
 	t_env *tmp = *begin_list;
-    data_ref = tmp->
 
-	if(cmp(tmp->value, data_ref) == 0)
+	if(cmp(tmp->value, data_ref->value) == 0)
 	{
 		*begin_list = tmp->next;
 		free(tmp);
-		ft_list_remove_if(begin_list, data_ref);
+		ft_remove_from_env(begin_list, data_ref);
 	}
 	tmp = *begin_list;
 	ft_remove_fron_env(tmp, data_ref);
@@ -93,7 +93,7 @@ void    unset(t_env **variable ,t_command *command)
         {
             if(!check_is_digit(command->args[i][0]) && !check_special_caract(command->args[i]) && identique_var(command->arg[i], variable))
             {
-               remove_from_env((*variable)->name, (*variable)->value);
+               remove_from_env(variable, finder_getter(&variable, command->args[i]));
             }
             i++;
         }

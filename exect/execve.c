@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execve.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 18:57:46 by mmakboub          #+#    #+#             */
+/*   Updated: 2022/12/22 21:06:56 by mmakboub         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"minishell.h"
 char *execute_cmd(t_command *command)
 {
 	char *line;
@@ -41,14 +54,13 @@ char *join_get_acces(char **splited_path, char *cmd)
 		splited_path[i] = ft_concatenate(tmp, "/", cmd);
 		free(tmp);
 		if(!check_accecs(splited_path[i]));
-			return(NULL);//don't knw what should i do in this case : todo: should fixe it;
+			return(NULL);
 		return(ft_strdup(splited_path));
 	}
 }
 void execve_cmd(t_command *command, char **env, char **argv)//command->argv:paramt3
 {
     char *path;
-    char *msg_error;
     path = execute_cmd(command);//todo : adding variable that stores all environment informatin
     if(execve(path, argv, env) == -1)
         perror("Minishell: error: ");

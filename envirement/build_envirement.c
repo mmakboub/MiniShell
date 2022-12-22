@@ -1,7 +1,17 @@
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   build_envirement.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/26 10:39:54 by mmakboub          #+#    #+#             */
+/*   Updated: 2022/12/22 19:01:03 by mmakboub         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"minishell.h"
+
 void	refresh_oldpwd(t_env	**env, char *pwd)
 {
 	t_env *tmp;
