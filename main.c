@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:34:13 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 17:34:45 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/23 20:19:02 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,50 +16,42 @@
 
 int main(int ac, char **av, char **env)
 {
-    int **fd;
+    int fd[2];
     int i = 0;
+    t_element *element;
 
     int process = 2;
     int pip = process - 1;
-    fd = (int **)malloc(sizeof(int *) * pip);
-    while (i < pipe)
-    {
-        fd[i] = (int *)malloc(sizeof(int) * 2);
-        if (pipe(fd[i]) == -1)
-            return (1);
-        i++;
-    }
-    i = 0;
-
+    int in_tmp = dup(0);
     while (element != NULL)
     {
         path , argv , env;
+        if(element->next)
+            pipe(fd);
         pid_t pid = fork();
         if (pid = 0)
         {
-            if (i == 0)
-            {
-                dup2(fd[i][1], stdout);
+            if (element->next) {    
+                close(1);
+                dup2(fd[1],1);
+                close(fd[1]);
+                close(fd[0]);
             }
-            else if ( i == process - 1)
-            {
-                dup2(fd[i - 1][0], stdin);
-            }
-            else
-            {
-                dup2(fd[i - 1][0], stdin);
-                dup2(fd[i][1], stdout);
-            }
-
-            close_all(fd);
             if(execve(path, cmd, env) == -1);
                 exit(1);
         }
-        close(fd[i][1]);
+        close(0);
+        if(element->next)
+        {    
+            dup2(fd[0],0);
+            close(fd[1]);
+            close(fd[0]);
+        }
         i++;
         element = element->next;
     }
-    close_all(fd);
+    dup2(in_tmp, 0);
+    close(in_tmp);
     i = 0;
     while (i < process)
     {
