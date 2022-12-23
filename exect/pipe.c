@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:54:30 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 20:42:36 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/23 22:47:06 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void handle_pipe(char *path, char **env, char **argv)
                 close(fd[1]);
                 close(fd[0]);
             }
-            if(execve(path, argv, env) == -1);
+            if((execve_cmd(path, argv, env) == -1))
                 exit(1);
         }
         close(0);

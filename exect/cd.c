@@ -12,7 +12,7 @@
 
 #include"minishell.h"
 
-void checkhome(t_env **env)
+void back_to_home(t_env **env)
 {
     t_env *home;
     home = finder_getter(env, "HOME");
@@ -23,9 +23,7 @@ void checkhome(t_env **env)
     }
     if(chdir(home->value) == -1)
         perror("cd");
-
 } 
-
 
 void cd(t_command *command, t_env **env)
 {
@@ -33,13 +31,13 @@ void cd(t_command *command, t_env **env)
     t_env  *oldpwd;
     
 
-    pwd = finder_getter(env, "PWD");
-    oldpwd = finder_getter(env, "OLDPWD");
+    pwd = finder_getter(&env, "PWD");
+    oldpwd = finder_getter(&env, "OLDPWD");
     if(!pwd || !oldpwd)
          return ;
-    if((!strcmp(command->args[1]) ,"--") || !strcmp(command->args[1], "~") || command->nb_args == 1 || (command->args[1][0] == '#'))
-        back_to_home(pwd, oldpwd, env);
-    else if (command->nb_args > 1)
+    if((!strcmp(command->args[1]) ,"--") || !strcmp(command->args[1], "~") || command->nbr_args == 1 || (command->args[1][0] == '#'))
+        back_to_home(env);
+    else if (command->nbr_args > 1)
     {
         if(chdir(command->args[1]) == -1)
             perror("cd");

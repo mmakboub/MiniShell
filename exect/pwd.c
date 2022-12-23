@@ -15,7 +15,7 @@ void pwd(void)
 {
     char *path;
     path = getcwd(NUll, 0);
-    if (path == NULL);
+    if (path == NULL)
         perror("Error");
     else if(printf("%s\n", path) != strlen(path) + 1)
         perror("Error");

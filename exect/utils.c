@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:40:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 16:40:26 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/23 22:43:23 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,37 @@ void	ft_lstadd_back(t_env *new, t_env **alst)
 	else
 		*alst = new;
 }
+char	*concatenate(const char *s1, const char *s2, const char *s3)
+{
+	char	*new_str;
+	size_t	len_s1;
+	size_t	len_s2;
+	size_t	len_s3;
+	size_t	j;
+	size_t	i;
+
+	if (!s1 || !s2 || !s3)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	len_s3 = ft_strlen(s3);
+	new_str = (char *)malloc((len_s1 + len_s2 + len_s3 + 1) * sizeof(char));
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		new_str[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		new_str[j++] = s2[i++];
+	i = 0;
+	while(s3[i])
+		new_str[j++] = s3[i++];
+	new_str[j] = '\0';
+	return (new_str);
+}
+
 int countArg(char **str) 
 {
     int i;
@@ -51,3 +82,32 @@ int countArg(char **str)
     return (--i);
 }
 
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+
+{
+	size_t	firstc;
+	char	*newstr;
+
+	firstc = 0;
+	if (!s)
+		return (NULL);
+	if (start > strlen(s))
+	{
+		newstr = malloc(1);
+		if (!newstr)
+			return (NULL);
+		newstr[0] = '\0';
+		return (newstr);
+	}
+	if (len > strlen(s))
+		len = strlen(s);
+	newstr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!newstr)
+		return (NULL);
+	while (firstc < len && start < strlen(s))
+	{
+		newstr[firstc++] = s[start++];
+	}
+	newstr[firstc] = '\0';
+	return (newstr);
+}

@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:57:46 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 20:36:01 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/23 22:46:14 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char *execute_cmd(t_command *command)
 	char *path;
 	char **splited_path;
 	int i;
-	if(!check_accecs(command->cmd));
+	if(!check_accecs_exec(command->cmd));//todo : ADD another fonction that check only accessibility while the path is executable and replace it in this line (nammed :check_access)
 		path = command->cmd;
 	line = getenv("PATH");
 	if(!line)
@@ -30,7 +30,7 @@ char *execute_cmd(t_command *command)
 		return(NULL);
 	return(path);
 }
-int check_acces(char *joined_path)
+int check_acces_exec(char *joined_path)
 {
 	int acc1;
 	int acc2;
@@ -52,7 +52,7 @@ char *join_get_acces(char **splited_path, char *cmd)
 		free(splited_path[i]);
 		splited_path[i] = ft_concatenate(tmp, "/", cmd);
 		free(tmp);
-		if(check_accecs(splited_path[i]));
+		if(check_accecs_exec(splited_path[i]));
 			return(ft_strdup(splited_path[i]));
 		i++;
 	}
@@ -65,4 +65,11 @@ void execve_cmd(t_command *command, char **env, char **argv)//command->argv:para
     if(execve(path, argv, env) == -1)
         perror("Minishell: error: ");
     free(path);
+}
+
+void execution(t_command *command)
+{
+	if(command->type == PIPE)
+		handle_pipe();
+		
 }

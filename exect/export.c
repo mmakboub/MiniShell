@@ -11,22 +11,20 @@
 /* ************************************************************************** */
 
 #include"minishell.h"
-void    display_env(t_env **envt)
+void    display_sorted_env(t_env **env)
 {
-	t_env *tmp = *env;
-    while (tmp != 0)
-    {
-        printf("%s\n", tmp->data);
-        tmp= tmp->next;
-    }
+    
+	// t_env *tmp = *env;
+    // while (tmp != 0)
+    // {
+    //     printf("%s\n", tmp->data);
+    //     tmp= tmp->next;
 }
 
 void export(t_command *command, t_env **env)
 {
-    if((command->nb_args < 2)&& (command->args[1][0] == '#' || command == ';'))
-    {
-        display_sorted_env(env)
-    }
+    if((command->nbr_args < 2))
+        display_sorted_env(env);
     else
-        added_display_env(env, commande-) // to do : mnin nji ntraiter l argument tani if condition ila kan arg[2][0] mashi alphabet treturner bash: export: `8=k': not a valid identifier / or !strchr(=)skip it 
+        added_display_env(env) // to do : mnin nji ntraiter l argument tani if condition ila kan arg[2][0] mashi alphabet treturner bash: export: `8=k': not a valid identifier / or !strchr(=)skip it 
 }

@@ -82,7 +82,7 @@ void    unset(t_env **variable ,t_command *command)
     i = 1;
     if(!variable)
         return ;
-    if(command->nb_args >= 2)
+    if(command->nbr_args >= 2)
     {
         if(command->args[1] && command->args[1][0] == '-')
         {

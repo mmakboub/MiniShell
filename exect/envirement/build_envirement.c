@@ -29,6 +29,7 @@ void	refresh_oldpwd(t_env	**env, char *pwd)
 		oldpwd = printf("OLDPWD=%s",pwd);
 		ft_lstadd_back(ft_lstnew(oldpwd), env);
 }
+
 t_env	*finder_getter(t_env	*env, char *name)
 {
 	while(env && strcmp(env->name, name))
@@ -39,7 +40,7 @@ t_env	*finder_getter(t_env	*env, char *name)
 }
 void	refresh_pwd(t_env **env)
 {
-	char *pwd
+	char *pwd;
 	t_env	*head;
 	head = *env;
 	while(head && strcmp(head->name, "PWD"))
@@ -47,41 +48,12 @@ void	refresh_pwd(t_env **env)
 	if(head && head->value)
 	{
 		free(head->value);
-		tmp->value == NULL;
+		head->value == NULL;
 		head->value = getcwd(NULL, 0);
 	}
 	else
-		pwd = printf("PWD=%s",getcwd(NULL, 0);
+		pwd = printf("PWD=%s",getcwd(NULL, 0));
 		ft_lstadd_back(ft_lstnew(pwd), env);
-}
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-
-{
-	size_t	firstc;
-	char	*newstr;
-
-	firstc = 0;
-	if (!s)
-		return (NULL);
-	if (start > strlen(s))
-	{
-		newstr = malloc(1);
-		if (!newstr)
-			return (NULL);
-		newstr[0] = '\0';
-		return (newstr);
-	}
-	if (len > strlen(s))
-		len = strlen(s);
-	newstr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!newstr)
-		return (NULL);
-	while (firstc < len && start < strlen(s))
-	{
-		newstr[firstc++] = s[start++];
-	}
-	newstr[firstc] = '\0';
-	return (newstr);
 }
 
 char receive_name(char *allstr)// allstr == line . start reading from 0 until len(strchr(=))

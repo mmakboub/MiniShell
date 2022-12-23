@@ -12,54 +12,24 @@
 
 #include"minishell.h"
 
-void	is_builting(t_command *cmd)//CMD = ARGV[0]
+void	is_builting(t_command *cmd, t_env **envv)//CMD = ARGV[0]
 {
-	if (!ft_strcmp(command->cmd[0], "echo"))
-		echo();
-    else if (!ft_strcmp(command->cmd, "pwd"))
+	if (!ft_strcmp(cmd->cmd, "echo"))
+		echo(cmd->args);
+    else if (!ft_strcmp(cmd->cmd, "pwd"))
         pwd();
-    else if (!ft_strcmp(command->cmd, "cd"))
-		cd();
-    else if (!ft_strcmp(command->cmd, "exit"))
-		exit();
-    else if (!ft_strcmp(command->cmd, "export"))
-		export();
-    else if (!ft_strcmp(command->cmd, "unset"))
-		unset();
-    else if (!ft_strcmp(command->cmd, "env"))
-		env();
+    else if (!ft_strcmp(cmd->cmd, "cd"))
+		cd(cmd, envv);
+    else if (!ft_strcmp(cmd->cmd, "exit"))
+		exit(cmd);
+    else if (!ft_strcmp(cmd->cmd, "export"))
+		export(cmd, envv);
+    else if (!ft_strcmp(cmd->cmd, "unset"))
+		unset(envv, cmd);
+    else if (!ft_strcmp(cmd->cmd, "env"))
+		env(envv, cmd);
 	else
-		check_path(cmd);
-}
-char	*concatenate(const char *s1, const char *s2, const char *s3)
-{
-	char	*new_str;
-	size_t	len_s1;
-	size_t	len_s2;
-	size_t	len_s3;
-	size_t	j;
-	size_t	i;
-
-	if (!s1 || !s2 || !s3)
-		return (NULL);
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	len_s3 = ft_strlen(s3);
-	new_str = (char *)malloc((len_s1 + len_s2 + len_s3 + 1) * sizeof(char));
-	if (!new_str)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-		new_str[j++] = s1[i++];
-	i = 0;
-	while (s2[i])
-		new_str[j++] = s2[i++];
-	i = 0;
-	while(s3[i])
-		new_str[j++] = s3[i++];
-	new_str[j] = '\0';
-	return (new_str);
+		check_cmd(cmd);// check if herdoc , redirection or pipe or command or command not found;
 }
 
 void env_initialisation(t_env **env)
@@ -72,7 +42,7 @@ void env_initialisation(t_env **env)
 	tmp = *env;
 	if(finder_getter(env,"PWD") == NULL)
 	{
-		pwd = printf("PWD=%s",getcwd(NULL, 0);
+		pwd = printf("PWD=%s",getcwd(NULL, 0));
 		ft_lstadd_back(ft_lstnew(pwd), env);
 		free(pwd);
 	}
@@ -98,7 +68,7 @@ void env_initialisation(t_env **env)
 	}
 	else
 	{
-		new_shlvl = printf("SHLVL=%s",);
+		new_shlvl = printf("SHLVL=1");
 		ft_lstadd_back((ft_lstnew(new_shlvl)), &tmp);
 	}
 }

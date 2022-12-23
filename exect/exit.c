@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include"minishell.h"
+
 void printferror(char *str)
 {
     write (1, "minishell: exit: ", 17);
@@ -57,7 +58,7 @@ void exit(t_command *command)
 		printf("exit\n");
         printf("minishell: exit: too many arguments");
 	}
-    if(command->nb_args == 1)
+    if(command->nbr_args == 1)
     {
         printf("%s\n", "exit");
         exit(0);

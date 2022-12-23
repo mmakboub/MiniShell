@@ -12,11 +12,11 @@
 
 #include"minishell.h"
 
-void env(t_env **cmd, t_command *command) //to do : add a condition if THERE IS MORE THAN 1 arg it should print to nmany args 
+void env(t_env **env, t_command *command) //to do : add a condition if THERE IS MORE THAN 1 arg it should print to nmany args 
 {
     t_env *tmp;
-    tmp = cmd;
-    if(command->nb_args > 1)
+    tmp = env;
+    if(command->nbr_args > 1)
         printf("env: %s: No such file or directory\n", command->args[1]);
     else 
     {      
