@@ -12,6 +12,17 @@
 
 #include"minishell.h"
 
+
+int	check_builtin(t_command *command)
+{
+	if (!ft_strcmp(command->cmd, "cd") || !ft_strcmp(command->cmd, "echo")
+	|| !ft_strcmp(command->cmd, "pwd") || !ft_strcmp(command->cmd, "env")
+	|| !ft_strcmp(command->cmd, "export") || !ft_strcmp(command->cmd, "unset") 
+	|| !ft_strcmp(command->cmd, "exit"))
+		return (1);
+	return (0);
+}
+
 void	is_builting(t_command *cmd, t_env **envv)//CMD = ARGV[0]
 {
 	if (!ft_strcmp(cmd->cmd, "echo"))
@@ -28,47 +39,6 @@ void	is_builting(t_command *cmd, t_env **envv)//CMD = ARGV[0]
 		unset(envv, cmd);
     else if (!ft_strcmp(cmd->cmd, "env"))
 		env(envv, cmd);
-	else
-		check_cmd(cmd);// check if herdoc , redirection or pipe or command or command not found;
 }
 
-void env_initialisation(t_env **env)
-{
-	int shlvl;
-	char *pwd;
-	t_env *tmp;
-	char new_shlvl;
 
-	tmp = *env;
-	if(finder_getter(env,"PWD") == NULL)
-	{
-		pwd = printf("PWD=%s",getcwd(NULL, 0));
-		ft_lstadd_back(ft_lstnew(pwd), env);
-		free(pwd);
-	}
-	while (strcmp("SHLVL", tmp->name) && tmp)
-		tmp = tmp->next;
-	if(tmp)
-	{
-		shlvl = atoi(ft_strdup(tmp->value));
-		//new_shlvl = atoi(ft_strdup(tmp->value)) + 1;
-		free(tmp->value);
-		if(shlvl < 0)
-			shlvl = 0;
-		//else if (shlvl == 999)
-			//shlvl == atoi(ft_strdup(""));
-		// else if (shlvl >=1000)
-		// {
-		// 	printf("minishell: warning: shell level %s too high, resetting to 1", );
-		// 	shlvl = 1;
-		// }
-		else
-			tmp->value = ft_itoa(shlvl) + 1;
-		free(shlvl);
-	}
-	else
-	{
-		new_shlvl = printf("SHLVL=1");
-		ft_lstadd_back((ft_lstnew(new_shlvl)), &tmp);
-	}
-}

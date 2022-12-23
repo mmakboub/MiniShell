@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 
 #include"minishell.h"
+
 void pwd(void)
 {
     char *path;
-    path = getcwd(NUll, 0);
+    path = getcwd(NULL, 0);
     if (path == NULL)
         perror("Error");
     else if(printf("%s\n", path) != strlen(path) + 1)

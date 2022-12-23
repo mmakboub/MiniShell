@@ -6,10 +6,12 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 22:38:55 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/23 23:35:44 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MINISHELL_H
+#define MINISHELL_H
 
 #include<stdlib.h>
 #include <unistd.h>
@@ -53,11 +55,11 @@ int     check_exit_status(char *str);
 void    export(t_command *command, t_env **env);
 void    display_env(t_env **envt);
 void	check_builtings(t_command **command);
-void	is_builting(t_command *cmd, t_env **envv)
+void	is_builting(t_command *cmd, t_env **envv);
 void    env(t_env **cmd, t_command *command);
 void    echo(char **arg);
 void    print_echoarg(char **arg);
-int     check_echo_n(char *arg)
+int     check_echo_n(char *arg);
 void    cd(t_command *command, t_env **env);
 void    checkhome(t_env *pwd, t_env *oldpwd, t_env **env);
 void	refresh_oldpwd(t_env	**env, char *pwd);

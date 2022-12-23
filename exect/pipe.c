@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:54:30 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 22:47:06 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/23 23:54:20 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void handle_pipe(char *path, char **env, char **argv)
 {
     int fd[2];
     int i = 0;
+    int result = EXIT_SUCCESS;
     t_command *node;
 
     int argc = 2;
@@ -35,11 +36,15 @@ void handle_pipe(char *path, char **env, char **argv)
                 close(fd[1]);
                 close(fd[0]);
             }
-            if((execve_cmd(path, argv, env) == -1))
-                exit(1);
+            if (check_builtin(node) == 1)
+		        is_builting(node, env);
+	        else
+		        (result = execve(node, env, argv));
+	        if (result == -1)
+		        printf("command not found");
         }
         close(0);
-        if(node->next)
+        if (node->next)
         {    
             dup2(fd[0],0);
             close(fd[1]);
