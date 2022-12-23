@@ -80,8 +80,8 @@ void env_initialisation(t_env **env)
 		tmp = tmp->next;
 	if(tmp)
 	{
-		shlvl = atoi(ft_strdup(tmp->value))
-		//new_shlvl = atoi(ft_strdup(tmp->value)) + 1 (int)
+		shlvl = atoi(ft_strdup(tmp->value));
+		//new_shlvl = atoi(ft_strdup(tmp->value)) + 1;
 		free(tmp->value);
 		if(shlvl < 0)
 			shlvl = 0;
@@ -93,12 +93,12 @@ void env_initialisation(t_env **env)
 		// 	shlvl = 1;
 		// }
 		else
-			tmp->value = ft_itoa(shlvl + 1);
+			tmp->value = ft_itoa(shlvl) + 1;
 		free(shlvl);
 	}
 	else
 	{
 		new_shlvl = printf("SHLVL=%s",);
-		ft_lstadd_back((ft_lstnew()), &tmp);
+		ft_lstadd_back((ft_lstnew(new_shlvl)), &tmp);
 	}
 }
