@@ -6,13 +6,13 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:40:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 22:43:23 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/24 22:26:19 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"minishell.h"
 
-t_env	*ft_lstnew(char *allstr)
+t_env	*ft_lstnew(char *allstr, int flag)
 {
 	t_env	*newelement;
 
@@ -20,7 +20,10 @@ t_env	*ft_lstnew(char *allstr)
 	if (newelement == 0)
 		return (0);
     newelement->name = receive_name(allstr);
-	newelement -> value = receive_value(allstr);
+	if(flag = 1)
+		newelement -> value = receive_value(allstr);
+	else
+		newelement -> value = receive_value_export(allstr);	
 	newelement -> next = NULL;
 	return (newelement);
 }

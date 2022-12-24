@@ -14,22 +14,6 @@
 //     printf("\n");
 //     ft_lstadd_back(ft_lstnew(t),&p);
 // }
-
-int main()
-{
-  
-    int file_desc = open("tricky.txt", O_WRONLY | O_APPEND);
-      
-    if(file_desc < 0)
-        printf("Error opening the file\n");
-    int copy_desc = dup2(file_desc, 1);
-    write(copy_desc,"This will be output to the file named dup.txt\n", 46);
-          
-    write(file_desc,"This will also be output to the file named dup.txt\n", 51);
-      
-    return 0;
-}
-
 // int main()
 // {
 //     int file_desc = open("tricky.txt",O_WRONLY | O_APPEND);
@@ -38,4 +22,13 @@ int main()
 //     printf("I will be printed in the file tricky.txt\n");
       
 // return 0;
+// }
+// int main(int ac , char **av)
+// {
+    
+//     if ((ac == 1) || ((ac == 2) && ((av[1][0] == '#') || (av[1][0] == '~'))))
+//         printf("hi meryem\n");
+//     else if (ac > 1)
+//         printf("meriem fenna\n");
+//     return(0);
 // }

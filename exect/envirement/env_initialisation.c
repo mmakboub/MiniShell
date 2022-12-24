@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:42:52 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 23:43:10 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/24 22:32:25 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void env_initialisation(t_env **env)
 	if(finder_getter(env,"PWD") == NULL)
 	{
 		pwd = printf("PWD=%s",getcwd(NULL, 0));
-		ft_lstadd_back(ft_lstnew(pwd), env);
+		ft_lstadd_back(ft_lstnew(pwd, 1), env);
 		free(pwd);
 	}
 	while (strcmp("SHLVL", tmp->name) && tmp)
@@ -48,6 +48,6 @@ void env_initialisation(t_env **env)
 	else
 	{
 		new_shlvl = printf("SHLVL=1");
-		ft_lstadd_back((ft_lstnew(new_shlvl)), &tmp);
+		ft_lstadd_back((ft_lstnew(new_shlvl, 1)), &tmp);
 	}
 }

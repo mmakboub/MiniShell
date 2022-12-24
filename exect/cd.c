@@ -35,7 +35,7 @@ void cd(t_command *command, t_env **env)
     oldpwd = finder_getter(&env, "OLDPWD");
     if(!pwd || !oldpwd)
          return ;
-    if((!strcmp(command->args[1]) ,"--") || !strcmp(command->args[1], "~") || command->nbr_args == 1 || (command->args[1][0] == '#'))
+    if ((strcmp(command->args[0], "cd")) || (strcmp(command->cmd, "cd") && (!strcmp(command->args[1] ,"--") || !strcmp(command->args[1], "~") || (command->args[1][0] == '#'))))
         back_to_home(env);
     else if (command->nbr_args > 1)
     {

@@ -27,7 +27,7 @@ void	refresh_oldpwd(t_env	**env, char *pwd)
 	}
 	else
 		oldpwd = printf("OLDPWD=%s",pwd);
-		ft_lstadd_back(ft_lstnew(oldpwd), env);
+		ft_lstadd_back(ft_lstnew(oldpwd, 1), env);
 }
 
 t_env	*finder_getter(t_env	*env, char *name)
@@ -53,17 +53,17 @@ void	refresh_pwd(t_env **env)
 	}
 	else
 		pwd = printf("PWD=%s",getcwd(NULL, 0));
-		ft_lstadd_back(ft_lstnew(pwd), env);
+		ft_lstadd_back(ft_lstnew(pwd, 1), env);
 }
 
-char receive_name(char *allstr)// allstr == line . start reading from 0 until len(strchr(=))
+char *receive_name(char *allstr)// allstr == line . start reading from 0 until len(strchr(=))
 {
     return(ft_substr(allstr, 0, strlen(allstr) - strlen(strchr(allstr, '='))));
 }
 
-char receive_value(char *allstr)
+char *receive_value(char *allstr)
 {
-     return(ft_substr(allstr, strlen(allstr) - strlen(strchr(allstr, '=')), "\0"));
+     return(ft_substr(allstr, strlen(allstr) - strlen(strchr(allstr, '=')), strlen(allstr)));
 }
 
 t_env   *build_env(char **env)
@@ -75,7 +75,7 @@ t_env   *build_env(char **env)
     i = 0;
     while(env[i])
     {
-        ft_lstadd_back(ft_lstnew(env[i]), &tmp);
+        ft_lstadd_back(ft_lstnew(env[i], 1), &tmp);
         i++;
     }
     return(tmp);

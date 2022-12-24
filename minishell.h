@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 23:35:44 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/24 23:34:35 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    unset(t_env **variable ,t_command *command);
 void    pwd(void);
 void    exit(t_command *command);
 int     check_exit_status(char *str);
-void    export(t_command *command, t_env **env);
+void    export(t_env **env, t_command *command);
 void    display_env(t_env **envt);
 void	check_builtings(t_command **command);
 void	is_builting(t_command *cmd, t_env **envv);
@@ -65,9 +65,10 @@ void    checkhome(t_env *pwd, t_env *oldpwd, t_env **env);
 void	refresh_oldpwd(t_env	**env, char *pwd);
 t_env	*finder_getter(t_env	*env, char *name);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char receive_name(char *allstr);
-t_env	*ft_lstnew(char *allstr);
+char    *receive_name(char *allstr);
+t_env	*ft_lstnew(char *allstr, int flag);
 void	ft_lstadd_back(t_env *new, t_env **alst);
 t_env   *build_env(char **env);
 void	refresh_pwd(t_env **env);
+void	ft_lstadd_back(t_env *new, t_env **alst);
 #endif
