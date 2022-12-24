@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:57:46 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/23 22:46:14 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/25 00:56:35 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,22 @@ void execve_cmd(t_command *command, char **env, char **argv)//command->argv:para
     free(path);
 }
 
-void execution(t_command *command)
+void execution(t_command *command, t_env **env)
 {
-	if(command->type == PIPE)
-		handle_pipe();
-		
+	int		fd[2];
+	
+	fd[1] = dup(1);
+	fd[0] = dup(0);
+	if (command->type = PIPE)
+		 exec_pipe();
+	else
+	{
+		if (command->type == HERDOC|| command->type == SUP
+			|| command->type == INF ||command->type = ADD)
+				handle_redirection();
+		else if (command->type == CMD)
+			check_cmd();
+		else
+			printf("minishell: command not found");
+	}
 }
