@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/29 14:12:20 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/12/02 23:52:13 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (cmd == NULL)
+	if (!lst || !del)
 		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
+	else
 	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
+		del(lst -> content);
+		free(lst);
 	}
 }
-

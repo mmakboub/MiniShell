@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/04 12:27:03 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/12/02 23:56:15 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+int	ft_isprint(int x)
 {
-	if (cmd == NULL)
-		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
-	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
-	}
+	if (x >= 32 && x < 127)
+		return (!0);
+	return (0);
 }
-

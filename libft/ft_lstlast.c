@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/28 18:45:02 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/12/02 23:52:10 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+t_list	*ft_lstlast(t_list *lst)
+
 {
-	if (cmd == NULL)
-		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
+	while (lst && lst ->next)
 	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
+		lst = lst -> next;
 	}
+	return (lst);
 }
-

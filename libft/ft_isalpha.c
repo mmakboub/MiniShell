@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/04 09:20:44 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/12/02 23:56:04 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+int	ft_isalpha(int c)
 {
-	if (cmd == NULL)
-		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
+		return (!0);
 	}
+	return (0);
 }
-

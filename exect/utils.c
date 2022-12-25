@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:40:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/24 22:26:19 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/25 16:19:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
-
+#include"../minishell.h"
+#include"string.h"
 t_env	*ft_lstnew(char *allstr, int flag)
 {
 	t_env	*newelement;
@@ -55,9 +55,9 @@ char	*concatenate(const char *s1, const char *s2, const char *s3)
 
 	if (!s1 || !s2 || !s3)
 		return (NULL);
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	len_s3 = ft_strlen(s3);
+	len_s1 = strlen(s1);
+	len_s2 = strlen(s2);
+	len_s3 = strlen(s3);
 	new_str = (char *)malloc((len_s1 + len_s2 + len_s3 + 1) * sizeof(char));
 	if (!new_str)
 		return (NULL);

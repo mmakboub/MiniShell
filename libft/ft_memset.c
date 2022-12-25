@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/05 11:36:06 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/12/02 23:51:35 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (cmd == NULL)
-		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
-	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
-	}
-}
+	size_t	i;
+	char	*p;
 
+	i = 0;
+	p = (char *)b;
+	i = 0;
+	while (i < len)
+	{
+		p[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
+}

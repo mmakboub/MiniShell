@@ -10,29 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include"../../minishell.h"
 
-void	refresh_oldpwd(t_env	**env, char *pwd)
+
+void	refresh_oldpwd(t_env	**env, t_env *pwd)
 {
 	t_env *tmp;
 	tmp = *env;
 	char *oldpwd;
-	while(tmp && strcmp(tmp->name, "OLDPWD"))
+	while(tmp && ft_strcmp(tmp->name, "OLDPWD"))
 		tmp = tmp->next;
 	if(tmp && tmp->value)
 	{
 		free(tmp->value);
 		tmp->value = NULL;
-		tmp->value = pwd;
+		tmp->value = pwd->value;
 	}
 	else
-		oldpwd = printf("OLDPWD=%s",pwd);
+		oldpwd = printf("OLDPWD=%s",pwd->value);
 		ft_lstadd_back(ft_lstnew(oldpwd, 1), env);
 }
 
 t_env	*finder_getter(t_env	*env, char *name)
 {
-	while(env && strcmp(env->name, name))
+	while(env && ft_strcmp(env->name, name))
 		env = env->next;
 	if(env && env->value)
 		return(env);
@@ -43,7 +44,7 @@ void	refresh_pwd(t_env **env)
 	char *pwd;
 	t_env	*head;
 	head = *env;
-	while(head && strcmp(head->name, "PWD"))
+	while(head && ft_strcmp(head->name, "PWD"))
 		head = head->next;
 	if(head && head->value)
 	{
@@ -58,12 +59,12 @@ void	refresh_pwd(t_env **env)
 
 char *receive_name(char *allstr)// allstr == line . start reading from 0 until len(strchr(=))
 {
-    return(ft_substr(allstr, 0, strlen(allstr) - strlen(strchr(allstr, '='))));
+    return(ft_substr(allstr, 0, ft_strlen(allstr) - ft_strlen(ft_strchr(allstr, '='))));
 }
 
 char *receive_value(char *allstr)
 {
-     return(ft_substr(allstr, strlen(allstr) - strlen(strchr(allstr, '=')), strlen(allstr)));
+     return(ft_substr(allstr, ft_strlen(allstr) - ft_strlen(ft_strchr(allstr, '=')), ft_strlen(allstr)));
 }
 
 t_env   *build_env(char **env)

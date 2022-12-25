@@ -32,3 +32,32 @@
 //         printf("meriem fenna\n");
 //     return(0);
 // }
+int	ft_isdigit(int x)
+
+{
+	if (x >= '0' && x <= '9')
+		return (1);
+	return (0);
+}
+int isalldigits(const char *s)  
+{
+    int i = 0;
+    while(s[i])
+    {
+        if(!ft_isdigit(s[i]))
+            return (0);
+        i++;
+    }
+    return(1);
+}
+
+int main()
+{
+    const char p[10] = "dfghh";
+    if (isalldigits(p))
+        printf("ok\n");
+    else
+        printf("ko\n");
+    return(0);
+}
+

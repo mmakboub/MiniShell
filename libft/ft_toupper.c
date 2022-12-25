@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/05 14:14:34 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/12/02 23:54:01 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+int	ft_toupper(int c)
 {
-	if (cmd == NULL)
-		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
-	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
-	}
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }
-

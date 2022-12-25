@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 
-#include"minishell.h"
+#include"../minishell.h"
 int check_echo_n(char *arg)
 {
-    int i = 0;
+    int i = 1;
     while(arg && arg[i])
     {
         if (arg[i] != 'n')
@@ -53,7 +53,7 @@ void print_echoarg(char **arg)
     while(arg[i])
         printf("%s", arg[i++]);
     if (!check)
-        write(1, '\n', 1);
+       printf("\n");
 }
 
 void echo(char **arg)

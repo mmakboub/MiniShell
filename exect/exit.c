@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include"../minishell.h"
 
 void printferror(char *str)
 {
@@ -19,7 +19,17 @@ void printferror(char *str)
 	write (1, ": numeric argument required\n", 28);
 	exit (255);
 }
-
+int isalldigits(const char *s)  
+{
+    int i = 0;
+    while(s[i])
+    {
+        if(!ft_isdigit(s[i]))
+            return (0);
+        i++;
+    }
+    return(1);
+}
 int check_exit_status(char *str)
 {
     int	i;
@@ -46,32 +56,33 @@ int check_exit_status(char *str)
 	}
 	return (sign * result);
 }
-void exit(t_command *command)
+void ft_exit(t_command *command)
 {
 	int i;
 	i = 1;
 	int j;
     int exit_status;
-	exit_status = check_exit_status(command->args[1]);
-    if(command->args[1] && command->args[2])
+    if((command->args[1] && command->args[2])) // && adding function that check if its only a digit) if not it print only minishell to many arg)
 	{
 		printf("exit\n");
-        printf("minishell: exit: too many arguments");
+        printf("minishell: exit: too many arguments\n");
 	}
-    if(command->nbr_args == 1)
+   	else if(command->nbr_args == 1)
     {
         printf("%s\n", "exit");
-        exit(0);
+        exit(1);
     }
 	while(command->args[i])
 	{
 		j = 0;
 		while(command->args[i][j])
 		{
-			if(exit_status == 0 && !ft_isdigit(command->args[i][j]))
+			if(!ft_isdigit(command->args[i][j]))
 				printferror(command->args[1]);
 			else
 				exit(exit_status);
+			j++;
 		}
+		i++;
 	}
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include"../minishell.h"
 
 void pwd(void)
 {
@@ -18,7 +18,7 @@ void pwd(void)
     path = getcwd(NULL, 0);
     if (path == NULL)
         perror("Error");
-    else if(printf("%s\n", path) != strlen(path) + 1)
+    else if(printf("%s\n", path) != ft_strlen(path) + 1)
         perror("Error");
     free(path);
 }

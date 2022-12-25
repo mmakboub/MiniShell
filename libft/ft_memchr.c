@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/08 15:09:54 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/12/01 17:40:51 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (cmd == NULL)
-		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
-	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
-	}
-}
+	size_t			i;
+	unsigned char	*mb;
+	unsigned char	sc;
 
+	i = 0;
+	mb = (unsigned char *)s;
+	sc = (unsigned char)c;
+	while (i < n)
+	{
+		if (mb[i] == sc)
+			return ((void *)&mb[i]);
+		i++;
+	}
+	return (NULL);
+}

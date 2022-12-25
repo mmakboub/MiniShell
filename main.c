@@ -6,75 +6,28 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:34:13 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/24 16:19:00 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/25 20:24:55 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	print_vars(void);
-static bool	is_valid_argument(char *arg);
+#include<stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include"minishell.h"
 
-int	builtin_export(int argc, char **argv)
+int main(int ac, char **av, char **env)
 {
-	int	status;
-	int	i;
-
-	status = EXIT_SUCCESS;
-	if (argc == 1)
-		print_vars();
-	i = 1;
-	while (argc > 1 && argv[i])
-	{
-		if (is_valid_argument(argv[i]) == false)
-		{
-			print_error(SHELL_NAME, argv[i], NULL, "not a valid identifier");
-			status = EXIT_FAILURE;
-		}
-		else if (ft_strchr(argv[i], '='))
-			env_put_var(argv[i]);
-		i++;
-	}
-	return (status);
-}
-
-static void	print_vars(void)
-{
-	char	**env_copy;
-	int		l_var_name;
-	int		i;
-
-	if (g_env == NULL || *g_env == NULL)
-		return ;
-	env_copy = malloc((split_count(g_env) + 1) * sizeof(char *));
-	if (env_copy == NULL)
-	{
-		print_error(SHELL_NAME, NULL, NULL, strerror(ENOMEM));
-		return ;
-	}
-	env_copy = ft_memcpy(env_copy, g_env,
-			(split_count(g_env) + 1) * sizeof(char *));
-	split_sort(env_copy);
-	i = 0;
-	while (env_copy[i])
-	{
-		l_var_name = ft_strchr(env_copy[i], '=') - env_copy[i];
-		printf("%.*s", l_var_name + 1, env_copy[i]);
-		printf("\"%s\"\n", env_get_value(env_copy[i]));
-		i++;
-	}
-	free(env_copy);
-}
-
-static bool	is_valid_argument(char *arg)
-{
-	int	i;
-
-	if (arg[0] == '\0' || arg[0] == '=')
-		return (false);
-	i = 0;
-	while (arg[i] != '\0' && arg[i] != '=' && env_is_var_char(arg[i]))
-		i++;
-	if (arg[i] == '\0' || arg[i] == '=')
-		return (true);
-	else
-	
+	t_command *line_cmd;
+	line_cmd = malloc(sizeof(t_command));
+	line_cmd->cmd = ft_strdup("exit");
+	line_cmd->args = malloc(sizeof(char *));
+	line_cmd->nbr_args = 2;
+	line_cmd->args[0] = line_cmd->cmd;
+	line_cmd->args[1] = ft_strdup("y0t");
+	// line_cmd->args[2] = ft_strdup("44747");
+	// // line_cmd->args[3] = ft_strdup("");
+	line_cmd->args[3] = NULL;
+	ft_exit(line_cmd);
+	return(0);
 }

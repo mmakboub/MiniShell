@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   env_initialisation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:42:52 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/24 22:32:25 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/25 16:42:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
+#include<string.h>
 void env_initialisation(t_env **env)
 {
 	int shlvl;
@@ -25,11 +26,11 @@ void env_initialisation(t_env **env)
 		ft_lstadd_back(ft_lstnew(pwd, 1), env);
 		free(pwd);
 	}
-	while (strcmp("SHLVL", tmp->name) && tmp)
+	while (ft_strcmp("SHLVL", tmp->name) && tmp)
 		tmp = tmp->next;
 	if(tmp)
 	{
-		shlvl = atoi(ft_strdup(tmp->value));
+		shlvl = ft_atoi(ft_strdup(tmp->value));
 		//new_shlvl = atoi(ft_strdup(tmp->value)) + 1;
 		free(tmp->value);
 		if(shlvl < 0)

@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmakboub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/10 15:16:58 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/11/13 10:56:01 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (cmd == NULL)
-		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
+	long	i;
+
+	i = n;
+	if (i < 0)
 	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
+		ft_putchar_fd('-', fd);
+		i = i * -1;
+	}
+	if (i <= 9)
+		ft_putchar_fd(i + '0', fd);
+	if (i >= 10)
+	{
+		ft_putnbr_fd(i / 10, fd);
+		ft_putnbr_fd(i % 10, fd);
 	}
 }
-

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 00:32:00 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:33:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2021/11/06 09:08:16 by mmakboub          #+#    #+#             */
+/*   Updated: 2021/12/03 00:15:43 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	execution(t_command *cmd)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+
 {
-	if (cmd == NULL)
-		return ;
-	if (cmd->type == PIPE)
-		pipe
-	else if (root->type == CMD)
-	{
-		if (root->rdrlst)
-			redirection(root);
-		else
-			execution_cmd(root);
-	}
-}
+	size_t			i;
+	unsigned char	*destination;
+	unsigned char	*source;
 
+	destination = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	if (!destination && !source)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		destination [i] = source[i];
+		i++;
+	}
+	return (dst);
+}

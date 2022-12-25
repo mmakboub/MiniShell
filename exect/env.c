@@ -12,6 +12,7 @@
 
 #include"minishell.h"
 
+
 void env(t_env **env, t_command *command) //to do : add a condition if THERE IS MORE THAN 1 arg it should print to nmany args 
 {
     t_env *tmp;
