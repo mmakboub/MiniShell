@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/26 16:10:16 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/26 17:07:15 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdbool.h>
 #include<string.h>
 #include"libft/libft.h"
+ #include <errno.h>
 
 #define PIPE 0
 #define INF 1

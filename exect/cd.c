@@ -22,7 +22,7 @@ void back_to_home(t_env **env)
         return;
     }
     if(chdir(home->value) == -1)
-        perror("cd");
+        printf("minishell: cd: %s:\n",strerror(errno));
 } 
 
 void cd(t_command *command, t_env **env)
@@ -42,6 +42,6 @@ void cd(t_command *command, t_env **env)
         if (chdir(command->args[1]) == -1)
             perror("cd");
     }
-    refresh_oldpwd(env, pwd);
-    refresh_pwd(env);
+    //refresh_oldpwd(env, pwd);
+    //refresh_pwd(env);
 }

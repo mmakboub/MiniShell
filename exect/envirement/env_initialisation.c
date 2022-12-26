@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_initialisation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:42:52 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 23:05:33 by marvin           ###   ########.fr       */
+/*   Updated: 2022/12/26 16:55:21 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void env_initialisation(t_env **env)
 	char new_shlvl;
 
 	tmp = *env;
-	if(finder_getter(env,"PWD") == NULL)
+	if(finder_getter(tmp,"PWD") == NULL)
 	{
-		pwd = printf("PWD=%s",getcwd(NULL, 0));
-		ft_lstadd_back(ft_lstnew(pwd, 1), env);
+		pwd = getcwd(NULL, 0);
+		char *joined = ft_strjoin("PWD=", pwd);
+		ft_lstadd_back(ft_lstnew(joined, 1), env);
 		free(pwd);
 	}
 	while (ft_strcmp("SHLVL", tmp->name) && tmp)
@@ -31,6 +32,7 @@ void env_initialisation(t_env **env)
 	if(tmp)
 	{
 		shlvl = ft_atoi(ft_strdup(tmp->value));
+		printf("%d", shlvl);
 		//new_shlvl = atoi(ft_strdup(tmp->value)) + 1;
 		free(tmp->value);
 		if(shlvl < 0)
@@ -44,11 +46,11 @@ void env_initialisation(t_env **env)
 		// }
 		else
 			tmp->value = ft_itoa(shlvl) + 1;
-		free(shlvl);
+		printf("%d", shlvl);
 	}
 	else
 	{
 		new_shlvl = printf("SHLVL=1");
-		ft_lstadd_back((ft_lstnew(new_shlvl, 1)), &tmp);
+		ft_lstadd_back((ft_lstnew(&new_shlvl, 1)), &tmp);
 	}
 }
