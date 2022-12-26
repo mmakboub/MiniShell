@@ -30,11 +30,11 @@ int isalldigits(const char *s)
     }
     return(1);
 }
-int check_exit_status(char *str)
+long check_exit_status(char *str)
 {
     int	i;
-	int	result;
-	int	sign;
+	long	result;
+	long	sign;
 
 	sign = 1;
 	result = 0;
@@ -61,7 +61,7 @@ void ft_exit(t_command *command)
 	int i;
 	i = 1;
 	int j;
-    int exit_status;
+    long exit_status;
     if((command->args[1] && command->args[2])) // && adding function that check if its only a digit) if not it print only minishell to many arg)
 	{
 		printf("exit\n");
@@ -80,7 +80,10 @@ void ft_exit(t_command *command)
 			if(!ft_isdigit(command->args[i][j]))
 				printferror(command->args[1]);
 			else
+			{
+				exit_status = check_exit_status(command->args[i]);
 				exit(exit_status);
+			}
 			j++;
 		}
 		i++;

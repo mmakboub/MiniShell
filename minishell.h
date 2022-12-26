@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/26 17:07:15 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:55:31 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_command{
     char **args;
     char *cmd;
     int nbr_args;
-    struct command *next;
-    struct command *prev;
+    struct s_command *next;
+    struct s_command *prev;
 }   t_command;
 
 
@@ -83,6 +83,6 @@ void	print_env(t_env **env);
 int check_plus(char *str, char c, char x);
 int check_caract(char *str, char c);
 void	print_env(t_env **env);
-
+void handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char **env, char **argv1, char **argv2, char **argv3);
 
 #endif

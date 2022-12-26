@@ -21,7 +21,7 @@ void back_to_home(t_env **env)
         printf("Minishell: cd: HOME not set");
         return;
     }
-    if(chdir(home->value) == -1)
+    if(chdir(&home->value[1]) == -1)
         printf("minishell: cd: %s:\n",strerror(errno));
 } 
 
@@ -35,12 +35,12 @@ void cd(t_command *command, t_env **env)
     oldpwd = finder_getter(*env, "OLDPWD");
     if(!pwd || !oldpwd)
          return ;
-    if ((ft_strcmp(command->args[0], "cd")) || (ft_strcmp(command->cmd, "cd") && (!strcmp(command->args[1] ,"--") || !strcmp(command->args[1], "~") || (command->args[1][0] == '#'))))
+    if ((!ft_strcmp(command->args[0], "cd") && command->nbr_args == 1) || (!ft_strcmp(command->cmd, "cd") && (!strcmp(command->args[1] ,"--") || !strcmp(command->args[1], "~") || (command->args[1][0] == '#'))))
         back_to_home(env);
     else if (command->nbr_args > 1)
     {
         if (chdir(command->args[1]) == -1)
-            perror("cd");
+            puts("nee");
     }
     //refresh_oldpwd(env, pwd);
     //refresh_pwd(env);
