@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:57:46 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 00:56:35 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/26 12:16:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,13 @@ void execution(t_command *command, t_env **env)
 				handle_redirection();
 		else if (command->type == CMD)
 			check_cmd();
-		else
-			printf("minishell: command not found");
 	}
+}
+void check_cmd(t_command *command, t_env **envv)
+{
+	if(check_builtings)
+		is_builting(command, envv);
+	else
+		execve_cmd(command, envv, command->args)
+		
 }

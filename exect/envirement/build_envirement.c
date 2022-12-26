@@ -17,7 +17,7 @@ void	refresh_oldpwd(t_env	**env, t_env *pwd)
 {
 	t_env *tmp;
 	tmp = *env;
-	char *oldpwd;
+	char *joined;
 	while(tmp && ft_strcmp(tmp->name, "OLDPWD"))
 		tmp = tmp->next;
 	if(tmp && tmp->value)
@@ -27,8 +27,8 @@ void	refresh_oldpwd(t_env	**env, t_env *pwd)
 		tmp->value = pwd->value;
 	}
 	else
-		oldpwd = printf("OLDPWD=%s",pwd->value);
-		ft_lstadd_back(ft_lstnew(oldpwd, 1), env);
+		joined = ft_strjoin("OLDPWD=",pwd->value);
+		ft_lstadd_back(ft_lstnew(joined, 1), env);
 }
 
 t_env	*finder_getter(t_env	*env, char *name)
@@ -49,12 +49,13 @@ void	refresh_pwd(t_env **env)
 	if(head && head->value)
 	{
 		free(head->value);
-		head->value == NULL;
+		head->value = NULL;
 		head->value = getcwd(NULL, 0);
 	}
 	else
-		pwd = printf("PWD=%s",getcwd(NULL, 0));
-		ft_lstadd_back(ft_lstnew(pwd, 1), env);
+		pwd = getcwd(NULL, 0);
+		char *joined = ft_strjoin("PWD=", pwd);
+		ft_lstadd_back(ft_lstnew(joined, 1), env);
 }
 
 char *receive_name(char *allstr)// allstr == line . start reading from 0 until len(strchr(=))

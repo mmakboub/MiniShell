@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 19:41:14 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/26 16:10:16 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,30 @@ void    export(t_env **env, t_command *command);
 void    display_env(t_env **envt);
 void	check_builtings(t_command **command);
 void	is_builting(t_command *cmd, t_env **envv);
-void    env(t_env **cmd, t_command *command);
+void    ft_env(t_env *cmd, t_command *command);
 void    echo(char **arg);
 void    print_echoarg(char **arg);
 int     check_echo_n(char *arg);
 void    cd(t_command *command, t_env **env);
 void    checkhome(t_env *pwd, t_env *oldpwd, t_env **env);
-void	refresh_oldpwd(t_env	**env, char *pwd);
+void	refresh_oldpwd(t_env	**env, t_env *pwd);
 t_env	*finder_getter(t_env	*env, char *name);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char    *receive_name(char *allstr);
+char    *receive_value(char *allstr);
 t_env	*ft_lstnew(char *allstr, int flag);
 void	ft_lstadd_back(t_env *new, t_env **alst);
 t_env   *build_env(char **env);
 void	refresh_pwd(t_env **env);
 void	ft_lstadd_back(t_env *new, t_env **alst);
 void env_initialisation(t_env **env);
+char *receive_value_export(char *allstr);
+t_env	*env_finder(t_env	*env, char *name);
+char *receive_name_export(char *allstr);
+void	print_env(t_env **env);
+int check_plus(char *str, char c, char x);
+int check_caract(char *str, char c);
+void	print_env(t_env **env);
+
+
 #endif

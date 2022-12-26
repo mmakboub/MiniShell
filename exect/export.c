@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include"../minishell.h"
 
 int check_caract(char *str, char c)
 {
@@ -19,7 +19,7 @@ int check_caract(char *str, char c)
         return(0);
     while(str[i])
     {
-        if(str[i] == c);
+        if(str[i] == c)
             return(1);
         i++;
     }
@@ -32,7 +32,7 @@ int check_plus(char *str, char c, char x)
     int i = 0;
     while(str[i] && str[i + 1])
     {
-        if(str[i] == c && str[i + 1] == x);
+        if(str[i] == c && str[i + 1] == x)
             return(1);
         i++;
     }
@@ -77,7 +77,7 @@ void export(t_env **env, t_command *command)
     {
         while(command->args[i])
         {
-            if(check_caract(command->args[i], '='))
+            if(check_caract(command->args[i], '=') == 1)
             {
                 if(!check_is_valid(command->args[i]))//return 0 in case its not valid
                 {

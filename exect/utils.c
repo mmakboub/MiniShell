@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:40:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/25 16:19:28 by marvin           ###   ########.fr       */
+/*   Updated: 2022/12/26 16:37:20 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ t_env	*ft_lstnew(char *allstr, int flag)
 	if (newelement == 0)
 		return (0);
     newelement->name = receive_name(allstr);
-	if(flag = 1)
+	if(flag == 1)
 		newelement -> value = receive_value(allstr);
 	else
 		newelement -> value = receive_value_export(allstr);	
 	newelement -> next = NULL;
 	return (newelement);
 }
-
+char *receive_value_export(char *allstr)
+{
+     return(ft_substr(allstr, strlen(allstr) - strlen(strchr(allstr, '=')), strlen(allstr)));
+}
 void	ft_lstadd_back(t_env *new, t_env **alst)
 {
 	t_env	*node;
@@ -39,7 +42,7 @@ void	ft_lstadd_back(t_env *new, t_env **alst)
 		{
 			node = node->next;
 		}
-			node->next = new;
+		node->next = new;
 	}
 	else
 		*alst = new;
@@ -83,34 +86,4 @@ int countArg(char **str)
     while (*str[i])
         i++;
     return (--i);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-
-{
-	size_t	firstc;
-	char	*newstr;
-
-	firstc = 0;
-	if (!s)
-		return (NULL);
-	if (start > strlen(s))
-	{
-		newstr = malloc(1);
-		if (!newstr)
-			return (NULL);
-		newstr[0] = '\0';
-		return (newstr);
-	}
-	if (len > strlen(s))
-		len = strlen(s);
-	newstr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!newstr)
-		return (NULL);
-	while (firstc < len && start < strlen(s))
-	{
-		newstr[firstc++] = s[start++];
-	}
-	newstr[firstc] = '\0';
-	return (newstr);
 }
