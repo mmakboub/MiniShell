@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/27 02:12:58 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/27 21:41:26 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_command{
 
 
 void    printferror(char *str);
-void    ft_remove_fron_env(t_env **begin_list, t_env *data_ref);
 int     check_is_digit(int x);
 int     check_special_caract(char **arg);
 t_env   *identique_var(char  *arg, t_env **variable);
@@ -85,4 +84,5 @@ void	print_env(t_env **env);
 void handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char **env, char **argv1, char **argv2, char **argv3);
 void	check_arg(t_command *command);
 void ft_env2(t_env *env, t_command *command);
+void  ft_remove_from_env(t_env **begin_list, t_env *data_ref);
 #endif
