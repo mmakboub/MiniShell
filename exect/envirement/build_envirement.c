@@ -27,8 +27,11 @@ void	refresh_oldpwd(t_env	**env, t_env *pwd)
 		tmp->value = pwd->value;
 	}
 	else
+	{
 		joined = ft_strjoin("OLDPWD=",pwd->value);
 		ft_lstadd_back(ft_lstnew(joined, 1), env);
+
+	}
 }
 
 t_env	*finder_getter(t_env	*env, char *name)
@@ -50,12 +53,14 @@ void	refresh_pwd(t_env **env)
 	{
 		free(head->value);
 		head->value = NULL;
-		head->value = getcwd(NULL, 0);
+		head->value = ft_strjoin("=",getcwd(NULL, 0));
 	}
 	else
+	{
 		pwd = getcwd(NULL, 0);
 		char *joined = ft_strjoin("PWD=", pwd);
 		ft_lstadd_back(ft_lstnew(joined, 1), env);
+	}
 }
 
 char *receive_name(char *allstr)// allstr == line . start reading from 0 until len(strchr(=))

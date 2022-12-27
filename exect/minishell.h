@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/27 00:17:09 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/27 02:12:58 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void    export(t_env **env, t_command *command);
 void    display_env(t_env **envt);
 void	check_builtings(t_command **command);
 void	is_builting(t_command *cmd, t_env **envv);
-void    ft_env(t_env *cmd, t_command *command);
 void    echo(char **arg);
 void    print_echoarg(char **arg);
 int     check_echo_n(char *arg);
@@ -85,4 +84,5 @@ int check_caract(char *str, char c);
 void	print_env(t_env **env);
 void handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char **env, char **argv1, char **argv2, char **argv3);
 void	check_arg(t_command *command);
+void ft_env2(t_env *env, t_command *command);
 #endif

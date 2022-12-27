@@ -13,9 +13,9 @@
 #include"minishell.h"
 
 
-void ft_env(t_env *env, t_command *command) //to do : add a condition if THERE IS MORE THAN 1 arg it should print to nmany args 
+void ft_env2(t_env *env, t_command *command) //to do : add a condition if THERE IS MORE THAN 1 arg it should print to nmany args 
 {
-    if(command->nbr_args > 1)
+    if(command->nbr_args > 2)
         printf("env: %s: No such file or directory\n", command->args[1]);
     else 
     {      

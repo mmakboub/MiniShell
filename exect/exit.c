@@ -122,4 +122,5 @@ void ft_exit(t_command *command)
 				exit(256 - ((exit_status * -1) % 256));
 		exit(exit_status % 256);
 	}
+	
 }

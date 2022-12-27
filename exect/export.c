@@ -90,7 +90,7 @@ void export(t_env **env, t_command *command)
                     {
                         tmp = env_finder(&env,receive_name(command->args[i]));
                         if (tmp->value)
-                            tmp->value = strjoin(tmp->value, receive_value_export(command->args[i]));
+                            tmp->value = ft_strjoin(tmp->value, receive_value_export(command->args[i]));
                         else
                             tmp->value = receive_value_export(command->args[i]); 
                     }
@@ -106,7 +106,7 @@ void export(t_env **env, t_command *command)
                 }
             }
             else
-                
+    
             i++;
         }
     }
