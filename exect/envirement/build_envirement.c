@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../minishell.h"
+#include"../minishell.h"
 
 
 void	refresh_oldpwd(t_env	**env, t_env *pwd)

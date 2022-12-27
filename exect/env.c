@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../minishell.h"
+#include"minishell.h"
 
 
 void ft_env(t_env *env, t_command *command) //to do : add a condition if THERE IS MORE THAN 1 arg it should print to nmany args 

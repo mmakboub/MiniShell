@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include"../minishell.h"
+#include"minishell.h"
 int check_echo_n(char *arg)
 {
     int i = 1;
@@ -58,7 +58,6 @@ void print_echoarg(char **arg)
 
 void echo(char **arg)
 {
-    int i = 1;
     if(arg[1] == NULL)
         write(1, "\n", 1);
     else if(arg[1] != NULL)

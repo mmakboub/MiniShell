@@ -6,12 +6,11 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:40:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/26 16:37:20 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/26 19:44:18 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../minishell.h"
-#include"string.h"
+#include"minishell.h"
 t_env	*ft_lstnew(char *allstr, int flag)
 {
 	t_env	*newelement;

@@ -6,12 +6,11 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:42:52 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/26 16:55:21 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/26 19:43:34 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
-#include<string.h>
+#include "../minishell.h"
 void env_initialisation(t_env **env)
 {
 	int shlvl;

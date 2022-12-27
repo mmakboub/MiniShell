@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/26 18:55:31 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/27 00:17:09 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_env   *identique_var(char  *arg, t_env **variable);
 void    unset(t_env **variable ,t_command *command);
 void    pwd(void);
 void    ft_exit(t_command *command);
-int     check_exit_status(char *str);
+long    check_exit_status(char *str);
 void    export(t_env **env, t_command *command);
 void    display_env(t_env **envt);
 void	check_builtings(t_command **command);
@@ -84,5 +84,5 @@ int check_plus(char *str, char c, char x);
 int check_caract(char *str, char c);
 void	print_env(t_env **env);
 void handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char **env, char **argv1, char **argv2, char **argv3);
-
+void	check_arg(t_command *command);
 #endif

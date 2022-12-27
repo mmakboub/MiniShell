@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../minishell.h"
+#include"minishell.h"
 
 void back_to_home(t_env **env)
 {
