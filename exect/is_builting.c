@@ -25,7 +25,7 @@ int	check_builtin(t_command *command)
 
 void	is_builting(t_command *cmd, t_env **envv)//CMD = ARGV[0]
 {
-	if (!ft_strcmp(cmd->cmd, "echo"))
+	if (!ft_strcmp(cmd->cmd, "echo" || )
 		echo(cmd->args);
     else if (!ft_strcmp(cmd->cmd, "pwd"))
         pwd();

@@ -22,6 +22,8 @@ void  ft_remove_from_env(t_env **begin_list, t_env *data_ref)
 	if(ft_strcmp(tmp->name, data_ref->name)==0)
 	{
 		*begin_list = tmp->next;
+        free(tmp->name);
+        free(tmp->value);
 		free(tmp);
 		return;
 	}
@@ -35,26 +37,18 @@ int check_is_digit(int x)
 	return (0);
 }
 
-int check_special_caract(char **arg)
+int check_special_caract(char *arg)
 {
     int i;
     int j;
-    i = 1;
+    i = 0;
     while(arg[i])
     {
-        j = 0;
-        while(arg[i][j])
-        {
-            if(arg[i][0] != '#' &&  check_is_digit(arg[i][0]) == 1 && ((arg[i][j] >= 'A' && arg[i][j] <= 'Z') ||(arg[i][j] >= 'a' && arg[i][j] <= 'z')) && arg[i][j] != '_')
-            {
-                printf("-minishell: unset: -%s: not a valid identifier\n", arg[i]);
-                return(1);
-            }
-            j++;
-        }
+        if(arg[0] != '#' && (check_is_digit(arg[i])) && ((arg[i]< 'A' && arg[i] > 'Z') ||(arg[i] < 'a' && arg[i] > 'z')) && arg[i] != '_')
+            return(0);
         i++;
     }
-    return(0);
+    return(1);
 }
 
 t_env *identique_var(char  *arg, t_env **variable)
@@ -63,7 +57,6 @@ t_env *identique_var(char  *arg, t_env **variable)
 
     while(tmp)
     {
-            puts("ok");
         if(strcmp((*variable)->name, arg) == 0)
         {
             tmp = *variable;
@@ -77,7 +70,6 @@ t_env *identique_var(char  *arg, t_env **variable)
 void    unset(t_env **variable ,t_command *command)
 {
     int i;
-
     i = 1;
     if(!variable)
         return ;
@@ -85,13 +77,18 @@ void    unset(t_env **variable ,t_command *command)
     {
         if(command->args[1] && command->args[1][0] == '-')
         {
-            printf("-minishell: unset: -%s: invalid option\nunset: usage: unset [-f] [-v] [-n] [-name ...]\n", command->args[1]);
+            printf("-minishell: unset: -%c: invalid option\nunset: usage: unset [-f] [-v] [-n] [-name ...]\n", command->args[1][1]);
             return ;
         }
         while (command->args[i])
         {
-            // if(!check_is_digit(command->args[1][0]) && !check_special_caract(command->args) && identique_var(command->args[i], variable))
-               ft_remove_from_env(variable, finder_getter(*variable, command->args[i]));
+            if(!check_is_digit(command->args[i][0]) && check_special_caract(command->args[i]))// && identique_var(command->args[i], variable))
+            {
+                if(finder_getter(*variable, command->args[i]))
+                    ft_remove_from_env(variable, finder_getter(*variable, command->args[i]));
+            }
+            else
+                printf("minishell: unset: `%s': not a valid identifier\n", command->args[1]);
             i++;
         }
     }

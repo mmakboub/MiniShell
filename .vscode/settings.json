@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "TEST.C": "cpp",
-        "minishell.h": "c"
+        "minishell.h": "c",
+        "complex": "c"
     }
 }

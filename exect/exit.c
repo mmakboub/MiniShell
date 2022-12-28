@@ -20,6 +20,7 @@ void printferror(char *str)
 	write (1, ": numeric argument required\n", 28);
 	exit (255);
 }
+
 int isalldigits(const char *s)  
 {
     int i = 0;
@@ -31,6 +32,7 @@ int isalldigits(const char *s)
     }
     return(1);
 }
+
 long check_exit_status(char *str)
 {
     int	i;
@@ -57,60 +59,18 @@ long check_exit_status(char *str)
 	}
 	return (sign * result);
 }
-// void ft_exit(t_command *command)
-// {
-// 	int i;
-// 	i = 1;
- 
-//     if((command->args[1] && command->args[2])) // && adding function that check if its only a digit) if not it print only minishell to many arg)
-// 	{
-// 		printf("exit\n");
-//         printf("minishell: exit: too many arguments\n");
-// 	}
-//    	else if(command->nbr_args == 1)
-//     {
-//         printf("%s\n", "exit");
-//         exit(1);
-//     }
-// 	else if (command->nbr_args == 2)
-// 		check_arg(command);
-// }
-
-// void	check_arg(t_command *command)
-// {
-// 	int i = 1;
-// 	long exit_status;
-// 	if(((isalldigits(command->args[i]) && ft_strlen(command->args[i]) > 19) || !isalldigits(command->args[i])))
-// 		printferror(command->args[i]);
-// 	else if(isalldigits(command->args[i]))
-// 	{
-// 		exit_status = check_exit_status(command->args[i]);
-// 		printf("%ld", exit_status);
-// 		if(exit_status < 0)
-// 		{
-// 			printf("exit\n");
-//             exit(256 - ((exit_status * -1) % 256));
-// 		}
-// 		else
-// 		{
-// 			printf("exit1\n");
-// 			exit(exit_status % 256);
-// 		}
-// 	}
-// 	i++;
-// }
 
 void ft_exit(t_command *command)
 {
     long exit_status;
-    if(command->nbr_args == 1)
+    if (command->nbr_args == 1)
     {
         printf("%s\n", "exit");
         exit(0);
     }
-	else if(!isalldigits(command->args[1]) || ft_strlen(command->args[1]) > 20)
+	else if (!isalldigits(command->args[1]) || ft_strlen(command->args[1]) > 20)
 		printferror(command->args[1]);
-    else if((command->args[1] && command->args[2])) // && adding function that check if its only a digit) if not it print only minishell to many arg)
+    else if ((command->args[1] && command->args[2])) // && adding function that check if its only a digit) if not it print only minishell to many arg)
 	{
 		printf("exit\n");
         printf("minishell: exit: too many arguments\n");
@@ -118,7 +78,7 @@ void ft_exit(t_command *command)
 	else
 	{
 		exit_status = check_exit_status(command->args[1]);
-		if(exit_status < 0)
+		if (exit_status < 0)
 				exit(256 - ((exit_status * -1) % 256));
 		exit(exit_status % 256);
 	}

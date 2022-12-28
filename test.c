@@ -61,8 +61,21 @@
 //     return(0);
 // }
 
-
+int check_is_digit(int x)
+{
+    if (x >= '0' && x <= '9')
+		return (1);
+	return (0);
+}
 int main()
 {
-    
+    int i;
+    i = 0;
+    char *str = "mariam";
+    while(str[i])
+    {
+        if(!check_is_digit(str[i]))
+            printf("ok%s\n", str);
+        i++;
+    }   
 }

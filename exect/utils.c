@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:40:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/26 19:44:18 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:58:33 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,13 @@ t_env	*ft_lstnew(char *allstr, int flag)
 	newelement = (t_env *)malloc(sizeof(t_env));
 	if (newelement == 0)
 		return (0);
-    newelement->name = receive_name(allstr);
 	if(flag == 1)
-		newelement -> value = receive_value(allstr);
+		newelement -> name = receive_name(allstr);
 	else
-		newelement -> value = receive_value_export(allstr);	
+		newelement -> name = receive_name_export(allstr);	
+	newelement -> value = receive_value(allstr);
 	newelement -> next = NULL;
 	return (newelement);
-}
-char *receive_value_export(char *allstr)
-{
-     return(ft_substr(allstr, strlen(allstr) - strlen(strchr(allstr, '=')), strlen(allstr)));
 }
 void	ft_lstadd_back(t_env *new, t_env **alst)
 {
