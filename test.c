@@ -3,6 +3,7 @@
 #include<string.h>
 #include <unistd.h>
 #include <errno.h>
+#include"./exect/minishell.h"
 #include <fcntl.h>
 // int main(int ac, char **av, char **env)
 // {
@@ -61,21 +62,40 @@
 //     return(0);
 // }
 
-int check_is_digit(int x)
+int	ft_lstsize(t_env *lst)
+
 {
-    if (x >= '0' && x <= '9')
-		return (1);
-	return (0);
+	int	len;
+
+	len = 0;
+	while (lst)
+	{
+		lst = lst -> next;
+		len++;
+	}
+	return (len);
+}
+
+char **convertto_doublep(t_env *env)
+{
+	int len;
+	int i;
+	char **dp;
+	i = 0;
+	len = ft_lstsize(env);
+	dp = (char **)malloc(sizeof(char *) * (len +1));
+	while (env)
+	{
+		dp[i] = ft_strjoin(env->name, env->value);
+		i++;
+		env = env->next;
+	}
+	dp[i] = NULL;
+	return(dp);
 }
 int main()
 {
-    int i;
-    i = 0;
-    char *str = "mariam";
-    while(str[i])
-    {
-        if(!check_is_digit(str[i]))
-            printf("ok%s\n", str);
-        i++;
-    }   
+    t_env *env;
+    env = malloc(sizeof)
+
 }

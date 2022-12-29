@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:31:40 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/29 15:48:05 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:44:36 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int main(int ac, char **av, char **env)
 	line_cmd->args = malloc(sizeof(char *)*6);
 	line_cmd->args[0] = line_cmd->cmd;
 	// //line_cmd->args[1] = NULL;
-	line_cmd->args[1] = ft_strdup("xngn");
-	//line_cmd->args[2] = ft_strdup("l22ss=jkj");
-	//line_cmd->args[3] = ft_strdup("l22ss=jkj");
+	line_cmd->args[1] = ft_strdup("ee+=lrl");
+	//line_cmd->args[2] = ft_strdup("xn+=rergr");
+	//line_cmd->args[3] = ft_strdup("xn=+eiej");
 	// // // // line_cmd->args[3] = ft_strdup("");
 	line_cmd->args[2] = NULL;
 	// // cd(line_cmd, &envr);

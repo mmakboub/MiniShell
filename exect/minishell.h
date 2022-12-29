@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/28 23:59:40 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:22:19 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ void	check_arg(t_command *command);
 void    ft_env2(t_env *env, t_command *command);
 void    ft_remove_from_env(t_env **begin_list, t_env *data_ref);
 t_env   *env_finder(t_env	*env, char *name);
-
+t_env    *exportnameonly(t_command *command);
 #endif

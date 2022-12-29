@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:40:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/28 23:58:33 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:11:15 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,4 @@ char	*concatenate(const char *s1, const char *s2, const char *s3)
 		new_str[j++] = s3[i++];
 	new_str[j] = '\0';
 	return (new_str);
-}
-
-int countArg(char **str) 
-{
-    int i;
-
-    i = 0;
-    while (*str[i])
-        i++;
-    return (--i);
 }

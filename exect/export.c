@@ -119,10 +119,7 @@ void export(t_env **env, t_command *command)
                 if(env_finder(*env,receive_name(command->args[i])))
                     env_finder(*env,receive_name(command->args[i]))->value = receive_value_export(command->args[i]);
                 else
-                {
-                    puts(command->args[i]);
                     ft_lstadd_back(ft_lstnew(command->args[i], 1), env);
-                }
             }
         }
         else
@@ -134,10 +131,13 @@ void export(t_env **env, t_command *command)
             newelement->name = command->args[i];
             newelement->value = NULL;
             ft_lstadd_back(newelement, env);
+            printf_env(env);
         }
         i++;
     }
 
-        printf_env(env);
 
 }
+
+
+//still trsiting first condition case it should not add the argument to exportand and handled errors;
