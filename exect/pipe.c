@@ -6,13 +6,13 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:54:30 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/29 14:45:36 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:26:15 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"minishell.h"
 
-void handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char **env, char **argv1, char **argv2, char **argv3)
+void handle_pipe(t_command *node, t_env **env)
 {
     int fd[2];
     int i = 0;
@@ -24,7 +24,6 @@ void handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char
     int in_tmp = dup(0);   
     while (node != NULL)
     {
-        // path , argv , env;
         if(node->next)
         {
             if (pipe(fd) == -1)
@@ -46,18 +45,7 @@ void handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char
             }
             // if (check_builtin(node) == 1)
 		    //     is_builting(node, env);
-	        if (i == 0)
-            {
-		        result = execve(path1, argv1, env);
-            }
-            else if (i == 1)
-            {
-		        result = execve(path2, argv2, env);
-            }
-            else if (i == 2)
-            {
-		        result = execve(path3, argv3, env);
-            }
+            check_cmd(node, env);
 	        if (result == EXIT_FAILURE)
 		        printf("command not found");
         }

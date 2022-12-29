@@ -13,7 +13,7 @@
 #include"minishell.h"
 
 
-int	check_builtin(t_command *command)
+int	check_builtings(t_command *command)
 {
 	if (!ft_strcmp(command->cmd, "cd") || !ft_strcmp(command->cmd, "echo")
 	|| !ft_strcmp(command->cmd, "pwd") || !ft_strcmp(command->cmd, "env")

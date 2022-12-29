@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 23:42:52 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/29 16:14:05 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:20:28 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void env_initialisation(t_env **env)
 	}
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize_env(t_env *lst)
 
 {
 	int	len;
@@ -68,13 +68,13 @@ int	ft_lstsize(t_list *lst)
 	return (len);
 }
 
-char *convertto_doublep(t_env *env)
+char **convertto_doublep(t_env *env)
 {
 	int len;
 	int i;
 	char **dp;
 	i = 0;
-	len = lstsize(&env);
+	len = ft_lstsize_env(env);
 	dp = (char **)malloc(sizeof(char *) * (len +1));
 	while (env)
 	{
@@ -84,4 +84,13 @@ char *convertto_doublep(t_env *env)
 	}
 	dp[i] = NULL;
 	return(dp);
+}
+
+char *convertto_char(t_env *env)
+{
+	char *p;
+	p = ft_strjoin(env->name, env->value);
+	if (p == NULL)
+		return (NULL);
+	return(p);
 }

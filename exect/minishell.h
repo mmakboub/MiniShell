@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 20:23:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/29 16:22:19 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:27:33 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void    ft_exit(t_command *command);
 long    check_exit_status(char *str);
 void    export(t_env **env, t_command *command);
 void    display_env(t_env **envt);
-void	check_builtings(t_command **command);
+int	    check_builtings(t_command *command);
 void	is_builting(t_command *cmd, t_env **envv);
 void    echo(char **arg);
 void    print_echoarg(char **arg);
@@ -80,10 +80,18 @@ t_env	*env_finder(t_env	*env, char *name);
 void	printf_env(t_env **env);
 int     check_plus(char *str, char c, char x);
 int     check_caract(char *str, char c);
-void    handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char **env, char **argv1, char **argv2, char **argv3);
+void handle_pipe(t_command *node, t_env **env);
 void	check_arg(t_command *command);
 void    ft_env2(t_env *env, t_command *command);
 void    ft_remove_from_env(t_env **begin_list, t_env *data_ref);
 t_env   *env_finder(t_env	*env, char *name);
 t_env    *exportnameonly(t_command *command);
+void    execve_cmd(t_command *command, t_env **env, char **argv);
+char *join_get_acces(char **splited_path, char *cmd);
+int check_accecs_exec(char *joined_path);
+char **convertto_doublep(t_env *env);
+int	ft_lstsize_env(t_env *lst);
+char *convertto_char(t_env *env);
+char	*ft_concatenate(const char *s1, const char *s2, const char *s3);
+void check_cmd(t_command *command, t_env **envv);
 #endif

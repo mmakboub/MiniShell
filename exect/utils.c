@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:40:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/29 16:11:15 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:16:16 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_lstadd_back(t_env *new, t_env **alst)
 	else
 		*alst = new;
 }
-char	*concatenate(const char *s1, const char *s2, const char *s3)
+char	*ft_concatenate(const char *s1, const char *s2, const char *s3)
 {
 	char	*new_str;
 	size_t	len_s1;
