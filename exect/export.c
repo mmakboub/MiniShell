@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include "./minishell.h"
 
 int check_caract(char *str, char c)
 {
@@ -49,6 +49,7 @@ void	printf_env(t_env **env)
 		current = current->next;
 	}
 }
+
 char *receive_name_export(char *allstr)// allstr == line . start reading from 0 until len(strchr(=))
 {
     return(ft_substr(allstr, 0, strlen(allstr) - strlen(strchr(allstr, '+'))));
@@ -56,7 +57,7 @@ char *receive_name_export(char *allstr)// allstr == line . start reading from 0 
 
 char *receive_value_export(char *allstr)
 {
-     return(ft_substr(allstr, strlen(allstr) - strlen(strchr(allstr, '=')) +1, strlen(allstr)));
+     return(ft_substr(allstr, strlen(allstr) - strlen(strchr(allstr, '=')) + 1, strlen(allstr)));
 }
 t_env	*env_finder(t_env	*env, char *name)
 {
@@ -94,42 +95,49 @@ void export(t_env **env, t_command *command)
     t_env *tmp;
     if(command->nbr_args == 1 || (command->nbr_args == 2 && (!ft_strcmp(command->args[1], "#") || !ft_strcmp(command->args[1], ";" ))))
         printf_env(env);
-    else if (command->nbr_args == 3)
+    while(command->args[i])
     {
-        while(command->args[i])
+        if(check_caract(command->args[i], '=') == 1)
         {
-            if(check_caract(command->args[i], '=') == 1)
+            // if (!check_is_valid(command->args[i]))
+            //     return;
+            if(check_plus(command->args[i], '+', '='))
             {
-                // if (!check_is_valid(command->args[i]))
-                //     return;
-                if(check_plus(command->args[i], '+', '='))
+                if(env_finder(*env,receive_name_export(command->args[i])))
                 {
-                    if(env_finder(*env,receive_name_export(command->args[i])))
-                    {
-                        tmp = env_finder(*(env),receive_name_export(command->args[i]));
-                        if (tmp->value)
-                            tmp->value = ft_strjoin(tmp->value, receive_value_export(command->args[i]));
-                        else
-                            tmp->value = receive_value_export(command->args[i]); 
-                    }
+                    tmp = env_finder(*(env),receive_name_export(command->args[i]));
+                    if (tmp->value)
+                        tmp->value = ft_strjoin(tmp->value, receive_value_export(command->args[i]));
                     else
-                        ft_lstadd_back(ft_lstnew(command->args[i], 2), env);
+                        tmp->value = receive_value_export(command->args[i]); 
                 }
                 else
+                    ft_lstadd_back(ft_lstnew(command->args[i], 2), env);
+            }
+            else
+            {
+                if(env_finder(*env,receive_name(command->args[i])))
+                    env_finder(*env,receive_name(command->args[i]))->value = receive_value_export(command->args[i]);
+                else
                 {
-                    if(env_finder(*env,receive_name(command->args[i])))
-                        env_finder(*env,receive_name(command->args[i]))->value = receive_value_export(command->args[i]);
-                    else
-                    {
-                        puts(command->args[i]);
-                        ft_lstadd_back(ft_lstnew(command->args[i], 1), env);
-                    }
+                    puts(command->args[i]);
+                    ft_lstadd_back(ft_lstnew(command->args[i], 1), env);
                 }
             }
-            i++;
         }
+        else
+        {
+            t_env	*newelement;
+            newelement = (t_env *)malloc(sizeof(t_env));
+            if (newelement == 0)
+                return ;
+            newelement->name = command->args[i];
+            newelement->value = NULL;
+            ft_lstadd_back(newelement, env);
+        }
+        i++;
     }
-    else
-        printf("minishell: export: too much argument");
-    
+
+        printf_env(env);
+
 }

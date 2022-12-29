@@ -15,17 +15,14 @@
 
 void ft_env2(t_env *env, t_command *command) //to do : add a condition if THERE IS MORE THAN 1 arg it should print to nmany args 
 {
-    if(command->nbr_args > 3)
+    if(command->nbr_args > 2)
         printf("env: %s: No such file or directory\n", command->args[1]);
     else 
     {      
         while(env)
         {
             if(env->value)
-            {
-                printf("%s",env->name);
-                printf("%s\n", env->value);
-            }
+                printf("%s%s\n",env->name, env->value);
             env = env->next;
         }
     }

@@ -25,20 +25,20 @@ int	check_builtin(t_command *command)
 
 void	is_builting(t_command *cmd, t_env **envv)//CMD = ARGV[0]
 {
-	if (!ft_strcmp(cmd->cmd, "echo" || )
+	if (!ft_strcmp(cmd->cmd, "echo"))
 		echo(cmd->args);
     else if (!ft_strcmp(cmd->cmd, "pwd"))
         pwd();
     else if (!ft_strcmp(cmd->cmd, "cd"))
 		cd(cmd, envv);
     else if (!ft_strcmp(cmd->cmd, "exit"))
-		exit(cmd);
+		ft_exit(cmd);
     else if (!ft_strcmp(cmd->cmd, "export"))
-		export(cmd, envv);
+		export(envv, cmd);
     else if (!ft_strcmp(cmd->cmd, "unset"))
 		unset(envv, cmd);
     else if (!ft_strcmp(cmd->cmd, "env"))
-		env(envv, cmd);
+		ft_env2(*envv, cmd);
 }
 
 

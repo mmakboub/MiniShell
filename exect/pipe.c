@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:54:30 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/27 00:38:54 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:45:36 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void handle_pipe(t_command *node , char *path1,  char *path2, char *path3 , char
     // t_command *node;
 
     int argc = 3;
-    int pip = argc - 1;
+    // int pip = argc - 1;
     int in_tmp = dup(0);   
     while (node != NULL)
     {
