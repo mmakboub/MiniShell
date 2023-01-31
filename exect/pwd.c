@@ -2,28 +2,43 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/11/20 15:55:23 by mmakboub          #+#    #+#             */
-/*   Updated: 2022/12/18 20:24:41 by mmakboub         ###   ########.fr       */
+/*   Updated: 2022/12/31 01:07:25 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include "../minishell.h"
 
-void pwd(void)
+char	*findevalue(t_env *env, char *name)
 {
-    char *path;
-    path = getcwd(NULL, 0);
-    if (path == NULL)
-        perror("Error");
-    else if(printf("%s\n", path) != ft_strlen(path) + 1)
-        perror("Error");
-    free(path);
+	while (env && ft_strcmp(env->name, name))
+		env = env->next;
+	if (env && env->value)
+		return (env->value);
+	return (NULL);
 }
-// int main()
-// {
-//     chdir("/mnt/c/Users/Dell");
-//     printf("pwd : %s\n ", getcwd(NULL, 0));
-// }
+
+void	pwd(t_env *env, char *name)
+{
+	char	*path;
+	char	*str;
+
+	path = getcwd(NULL, 0);
+	add_back_memory(path, 1);
+	if (path == NULL)
+	{
+		str = findevalue(env, name);
+		if (str)
+			printf("%s\n", &str[1]);
+		else
+			printf("getcwd couldn't find the pwd\n");
+	}
+	else
+		printf("%s\n", path);
+}

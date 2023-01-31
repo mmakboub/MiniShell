@@ -2,40 +2,45 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/11/22 14:23:30 by mmakboub          #+#    #+#             */
 /*   Updated: 2022/12/22 18:57:05 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include "../minishell.h"
 
-void printferror(char *str)
+void	printferror(char *str)
 {
-	write(1, "exit\n", 5);
-    write (1, "minishell: exit: ", 17);
-	write (1, str, ft_strlen(str));
-	write (1, ": numeric argument required\n", 28);
-	exit (255);
+	write(1, "minishell: exit: ", 17);
+	write(1, str, ft_strlen(str));
+	write(1, ": numeric argument required\n", 28);
+	g_global.exit_status = 255;
+	exit(255);
 }
 
-int isalldigits(const char *s)  
+int	isalldigits(const char *s)
 {
-    int i = 0;
-    while(s[i])
-    {
-        if(!ft_isdigit(s[i]))
-            return (0);
-        i++;
-    }
-    return(1);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-long check_exit_status(char *str)
+long	check_exit_status(char *str)
 {
-    int	i;
+	int		i;
 	long	result;
 	long	sign;
 
@@ -60,27 +65,27 @@ long check_exit_status(char *str)
 	return (sign * result);
 }
 
-void ft_exit(t_command *command)
+void	ft_exit(t_element *command)
 {
-    long exit_status;
-    if (command->nbr_args == 1)
-    {
-        printf("%s\n", "exit");
-        exit(0);
-    }
-	else if (!isalldigits(command->args[1]) || ft_strlen(command->args[1]) > 20)
+	long	exit_status;
+
+	printf("%s\n", "exit");
+	if (command->nbr_args == 1)
+		exit(0);
+	else if (!isalldigits(command->args[1]) \
+		|| ft_strlen(command->args[1]) > 20)
 		printferror(command->args[1]);
-    else if ((command->args[1] && command->args[2])) // && adding function that check if its only a digit) if not it print only minishell to many arg)
+	else if ((command->args[1] && command->args[2]))
 	{
-		printf("exit\n");
-        printf("minishell: exit: too many arguments\n");
+		printf("minishell: exit: too many arguments\n");
+		g_global.exit_status = 1;
 	}
 	else
 	{
 		exit_status = check_exit_status(command->args[1]);
 		if (exit_status < 0)
-				exit(256 - ((exit_status * -1) % 256));
+			exit(256 - ((exit_status * -1) % 256));
 		exit(exit_status % 256);
 	}
-	
+	g_global.exit_status = 0;
 }
